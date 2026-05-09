@@ -42,12 +42,6 @@ const motos = [
 ];
 
 const agencias = {
-  malacatan: {
-    nombre: "Malacatán",
-    telefono: "50236500543"
-  },
-  sanpablo: {
-    nombre: "San Pablo",
-    telefono: "50259173974"
-  }
+  malacatan: { nombre:"Malacatán", telefono:"50236500543" },
+  sanpablo: { nombre:"San Pablo", telefono:"50259173974" }
 };

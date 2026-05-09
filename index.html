@@ -4,29 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Catálogo Italika</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=7.1" />
 </head>
 <body>
-  <div class="bg"></div>
+  <div class="background"></div>
 
   <header class="hero">
-    <div class="topbar">
-      <a class="nav-pill active" href="#catalogo">Catálogo</a>
-      <button class="nav-pill" id="aboutBtn">Acerca de</button>
-    </div>
-
-    <img class="logo-header" src="assets/img/logo-header.png" alt="Italika Malacatán San Pablo" />
-
-    <div class="hero-title">
-      <span>CATÁLOGO</span>
-      <span>DE MOTOCICLETAS</span>
-    </div>
-
-    <p class="hero-subtitle">Modelos disponibles, precios de contado y atención directa por WhatsApp.</p>
+    <img class="hero-logo" src="assets/img/logo-header.png" alt="Italika Malacatán" onerror="this.src='assets/img/logo-malacatan.png'">
+    <p class="hero-kicker">CATÁLOGO DE MOTOCICLETAS</p>
+    <p class="hero-text">Modelos disponibles, precios de contado y atención directa por WhatsApp.</p>
   </header>
 
-  <main id="catalogo" class="main">
-    <aside class="categories glass" id="categories"></aside>
+  <main class="page">
+    <aside class="sidebar glass" id="categories"></aside>
 
     <section class="catalog">
       <div class="controls">
@@ -47,55 +37,46 @@
     </section>
   </main>
 
-  <button class="floating" id="floatingBtn">
+  <button class="float-btn" id="floatBtn">
     <span>☎</span>
     <b>Contactar</b>
   </button>
 
   <div class="modal" id="motoModal">
-    <div class="modal-bg" data-close></div>
-    <div class="moto-modal glass">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card glass">
       <button class="close" data-close>×</button>
-
-      <div class="modal-img">
-        <img id="modalImg" alt="" />
-      </div>
-
-      <div class="modal-info">
-        <span class="badge" id="modalCat"></span>
+      <div class="modal-photo"><img id="modalImg" alt=""></div>
+      <div class="modal-content">
+        <span class="badge" id="modalCategory"></span>
         <h2 id="modalName"></h2>
         <p id="modalDetail"></p>
-
-        <div class="price-box">
+        <div class="price-panel">
           <small>Precio de contado</small>
           <strong id="modalPrice"></strong>
         </div>
-
-        <div class="meta">
+        <div class="info-row">
           <span>SKU: <b id="modalSku"></b></span>
           <span>Código: <b id="modalCode"></b></span>
         </div>
-
         <button class="primary" id="modalInterest">Me interesa esto</button>
       </div>
     </div>
   </div>
 
   <div class="modal" id="agencyModal">
-    <div class="modal-bg" data-close-agency></div>
-    <div class="agency-modal glass">
+    <div class="modal-backdrop" data-close-agency></div>
+    <div class="agency-card glass">
       <button class="close" data-close-agency>×</button>
       <h2>¿Con qué agencia deseas comunicarte?</h2>
       <p id="agencyText">Te enviaremos a WhatsApp.</p>
-
-      <div class="agency-grid">
+      <div class="agency-list">
         <button class="agency" data-agency="malacatan">
-          <img src="assets/img/logo-malacatan.png" alt="Malacatán" />
+          <img src="assets/img/logo-malacatan.png" alt="Malacatán">
           <span>Malacatán</span>
         </button>
-
         <button class="agency" data-agency="sanpablo">
-          <img src="assets/img/logo-sanpablo.png" alt="San Pablo" />
+          <img src="assets/img/logo-sanpablo.png" alt="San Pablo">
           <span>San Pablo</span>
         </button>
       </div>
@@ -104,7 +85,7 @@
 
   <footer>© 2026 Italika Malacatán / San Pablo</footer>
 
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <script src="data.js?v=7.1"></script>
+  <script src="app.js?v=7.1"></script>
 </body>
 </html>

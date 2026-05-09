@@ -2,7 +2,6 @@ const grid = document.getElementById("grid");
 const categoriesBox = document.getElementById("categories");
 const searchInput = document.getElementById("searchInput");
 const sortSelect = document.getElementById("sortSelect");
-
 const motoModal = document.getElementById("motoModal");
 const agencyModal = document.getElementById("agencyModal");
 
@@ -15,18 +14,22 @@ function money(value){
 
 function imagePaths(name){
   const raw = String(name || "").trim();
-  const variants = [...new Set([
-    raw,
-    raw.toLowerCase(),
-    raw.toUpperCase()
-  ])];
-
+  const lower = raw.toLowerCase();
+  const upper = raw.toUpperCase();
+  const variants = [...new Set([raw, lower, upper])];
   const exts = ["png","jpg","jpeg","webp","PNG","JPG","JPEG","WEBP"];
-  const paths = [];
 
-  variants.forEach(v => {
-    exts.forEach(ext => {
-      paths.push(`assets/img/motos/${v}.${ext}`);
+  const folders = [
+    "assets/img/motos",
+    "assets/img"
+  ];
+
+  const paths = [];
+  folders.forEach(folder => {
+    variants.forEach(v => {
+      exts.forEach(ext => {
+        paths.push(`${folder}/${v}.${ext}`);
+      });
     });
   });
 
@@ -47,7 +50,6 @@ function setImage(img, baseName, altText){
       img.onerror = null;
       const parent = img.parentElement;
       img.remove();
-
       if(parent && !parent.querySelector(".no-img")){
         const fallback = document.createElement("div");
         fallback.className = "no-img";
@@ -61,13 +63,13 @@ function setImage(img, baseName, altText){
 }
 
 function buildCategories(){
-  const counts = { Todas: motos.length };
+  const counts = { Todas:motos.length };
 
   motos.forEach(moto => {
     counts[moto.categoria] = (counts[moto.categoria] || 0) + 1;
   });
 
-  categoriesBox.innerHTML = Object.entries(counts).map(([cat, count]) => `
+  categoriesBox.innerHTML = Object.entries(counts).map(([cat,count]) => `
     <button class="cat-btn ${cat === activeCategory ? "active" : ""}" data-cat="${cat}">
       <span>${cat}</span>
       <span class="count">${count}</span>
@@ -83,52 +85,37 @@ function buildCategories(){
   });
 }
 
-function getFilteredMotos(){
+function getFiltered(){
   const query = searchInput.value.trim().toLowerCase();
 
   let list = motos.filter(moto => {
-    const matchCategory = activeCategory === "Todas" || moto.categoria === activeCategory;
     const text = `${moto.nombre} ${moto.detalle} ${moto.categoria} ${moto.sku} ${moto.codigo}`.toLowerCase();
-
-    return matchCategory && text.includes(query);
+    const matchCat = activeCategory === "Todas" || moto.categoria === activeCategory;
+    return matchCat && text.includes(query);
   });
 
-  if(sortSelect.value === "priceAsc"){
-    list.sort((a,b) => a.precio - b.precio);
-  }
-
-  if(sortSelect.value === "priceDesc"){
-    list.sort((a,b) => b.precio - a.precio);
-  }
-
-  if(sortSelect.value === "nameAsc"){
-    list.sort((a,b) => a.nombre.localeCompare(b.nombre));
-  }
+  if(sortSelect.value === "priceAsc") list.sort((a,b) => a.precio - b.precio);
+  if(sortSelect.value === "priceDesc") list.sort((a,b) => b.precio - a.precio);
+  if(sortSelect.value === "nameAsc") list.sort((a,b) => a.nombre.localeCompare(b.nombre));
 
   return list;
 }
 
 function render(){
-  const list = getFilteredMotos();
-
+  const list = getFiltered();
   grid.innerHTML = "";
 
   list.forEach((moto, i) => {
     const card = document.createElement("article");
     card.className = "card glass";
-    card.style.animationDelay = `${Math.min(i * 35, 350)}ms`;
+    card.style.animationDelay = `${Math.min(i * 30, 330)}ms`;
 
     card.innerHTML = `
       <span class="tag">${moto.categoria}</span>
-
-      <div class="img-wrap">
-        <img alt="${moto.nombre}">
-      </div>
-
+      <div class="img-wrap"><img></div>
       <h3>${moto.nombre}</h3>
       <p class="detail">${moto.detalle}</p>
       <div class="price">${money(moto.precio)}</div>
-
       <button class="interest">Me interesa esto</button>
     `;
 
@@ -149,7 +136,7 @@ function render(){
 function openMoto(moto){
   selectedMoto = moto;
 
-  document.getElementById("modalCat").textContent = moto.categoria;
+  document.getElementById("modalCategory").textContent = moto.categoria;
   document.getElementById("modalName").textContent = moto.nombre;
   document.getElementById("modalDetail").textContent = moto.detalle;
   document.getElementById("modalPrice").textContent = money(moto.precio);
@@ -158,7 +145,6 @@ function openMoto(moto){
 
   const img = document.getElementById("modalImg");
   const parent = img.parentElement;
-
   parent.querySelectorAll(".no-img").forEach(el => el.remove());
 
   if(!parent.contains(img)){
@@ -183,15 +169,14 @@ function openAgency(){
   agencyModal.classList.add("show");
 }
 
-function goWhatsApp(key){
+function openWhatsApp(key){
   const agencia = agencias[key];
 
-  const message = selectedMoto
+  const msg = selectedMoto
     ? `Hola, estoy interesado en la moto ${selectedMoto.nombre} (${selectedMoto.detalle}) con precio de contado ${money(selectedMoto.precio)}. Quiero comunicarme con agencia ${agencia.nombre}.`
     : `Hola, quiero información del catálogo de motocicletas. Quiero comunicarme con agencia ${agencia.nombre}.`;
 
-  const url = `https://wa.me/${agencia.telefono}?text=${encodeURIComponent(message)}`;
-  window.open(url, "_blank");
+  window.open(`https://wa.me/${agencia.telefono}?text=${encodeURIComponent(msg)}`, "_blank");
 }
 
 document.querySelectorAll("[data-close], [data-close-agency]").forEach(el => {
@@ -199,17 +184,14 @@ document.querySelectorAll("[data-close], [data-close-agency]").forEach(el => {
 });
 
 document.getElementById("modalInterest").addEventListener("click", openAgency);
-document.getElementById("floatingBtn").addEventListener("click", () => {
+
+document.getElementById("floatBtn").addEventListener("click", () => {
   selectedMoto = null;
   openAgency();
 });
 
 document.querySelectorAll(".agency").forEach(btn => {
-  btn.addEventListener("click", () => goWhatsApp(btn.dataset.agency));
-});
-
-document.getElementById("aboutBtn").addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  btn.addEventListener("click", () => openWhatsApp(btn.dataset.agency));
 });
 
 searchInput.addEventListener("input", render);
@@ -219,5 +201,9 @@ document.addEventListener("keydown", e => {
   if(e.key === "Escape") closeAll();
 });
 
-buildCategories();
-render();
+if(typeof motos === "undefined"){
+  grid.innerHTML = "<p>No se pudo cargar data.js</p>";
+}else{
+  buildCategories();
+  render();
+}
