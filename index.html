@@ -1,15 +1,90 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo Italika</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo Italika Malacatán / San Pablo</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<div class="container">
-<h1>CATÁLOGO ITALIKA</h1>
-<p>Las imágenes ahora funcionan correctamente usando nombres en minúsculas.</p>
-</div>
+  <div class="bg"></div>
+
+  <header class="hero">
+    <img class="brand brand-main" src="assets/img/logo-header.png" alt="Italika Malacatán" onerror="this.src='assets/img/logo-malacatan.png'">
+    <p class="kicker">CATÁLOGO DE MOTOCICLETAS</p>
+    <h1>Modelos disponibles con atención directa por WhatsApp</h1>
+    <p class="subtitle">Toca una moto para ver su tarjeta completa. Diseño optimizado para computadora, tablet y celular.</p>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar glass" id="categoryList"></aside>
+
+    <section class="content">
+      <div class="toolbar">
+        <label class="searchBox glass">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="Buscar modelo, categoría o SKU..." />
+        </label>
+        <select id="sortSelect" class="glass">
+          <option value="default">Ordenar</option>
+          <option value="priceAsc">Precio: menor a mayor</option>
+          <option value="priceDesc">Precio: mayor a menor</option>
+          <option value="nameAsc">Modelo A-Z</option>
+        </select>
+      </div>
+
+      <div class="grid" id="motoGrid"></div>
+    </section>
+  </main>
+
+  <button class="floatingContact" id="floatingContact" aria-label="Contactar por WhatsApp">
+    <span>☎</span><b>Contactar</b>
+  </button>
+
+  <div class="modal" id="motoModal" aria-hidden="true">
+    <div class="modalOverlay" data-close></div>
+    <article class="modalCard glass">
+      <button class="closeBtn" data-close>×</button>
+      <div class="modalImgWrap"><img id="modalImg" alt=""></div>
+      <div class="modalInfo">
+        <span id="modalCategory" class="pill"></span>
+        <h2 id="modalName"></h2>
+        <p id="modalDetail"></p>
+        <div class="priceBox">
+          <small>Precio de contado</small>
+          <strong id="modalPrice"></strong>
+        </div>
+        <div class="specs">
+          <span>SKU: <b id="modalSku"></b></span>
+          <span>Código: <b id="modalCode"></b></span>
+        </div>
+        <button class="primaryBtn" id="modalInterest">Me interesa esto</button>
+      </div>
+    </article>
+  </div>
+
+  <div class="modal" id="agencyModal" aria-hidden="true">
+    <div class="modalOverlay" data-close-agency></div>
+    <article class="agencyCard glass">
+      <button class="closeBtn" data-close-agency>×</button>
+      <h2>¿Con qué agencia deseas comunicarte?</h2>
+      <p id="agencyMotoText">Te redirigiremos a WhatsApp.</p>
+      <div class="agencyButtons">
+        <button class="agencyBtn" data-agency="malacatan">
+          <img src="assets/img/logo-malacatan.png" onerror="this.style.display='none'" alt="">
+          <span>Malacatán</span>
+        </button>
+        <button class="agencyBtn" data-agency="sanpablo">
+          <img src="assets/img/logo-sanpablo.png" onerror="this.style.display='none'" alt="">
+          <span>San Pablo</span>
+        </button>
+      </div>
+    </article>
+  </div>
+
+  <footer>© 2026 Italika Malacatán / San Pablo</footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
