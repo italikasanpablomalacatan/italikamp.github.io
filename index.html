@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo de Motos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-glow glow-one"></div>
+  <div class="bg-glow glow-two"></div>
+
+  <header class="hero glass reveal">
+    <nav>
+      <div class="brand"><span></span> Catálogo Motos</div>
+      <a href="#catalogo" class="nav-link">Ver catálogo</a>
+    </nav>
+    <section class="hero-content">
+      <p class="eyebrow">Distribuidores y T.P.</p>
+      <h1>Del 12 al 18 de Mayo 2026</h1>
+      <p class="subtitle">Explora modelos, precios de contado y crédito en una experiencia minimalista con estilo cristal.</p>
+      <div class="hero-actions">
+        <a href="#catalogo" class="btn primary">Explorar motos</a>
+        <button class="btn ghost" id="openContactTop">Contactar agencia</button>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="toolbar glass reveal" id="catalogo">
+      <div>
+        <h2>Catálogo</h2>
+        <p>Busca por modelo, SKU, código o categoría.</p>
+      </div>
+      <input id="searchInput" type="search" placeholder="Buscar moto..." />
+    </section>
+
+    <section id="categoryFilters" class="filters reveal"></section>
+    <section id="catalogGrid" class="catalog-grid"></section>
+  </main>
+
+  <button class="floating-phone" id="openContact" aria-label="Contactar por WhatsApp">
+    <span class="phone-icon">☎</span>
+  </button>
+
+  <div class="modal" id="contactModal" aria-hidden="true">
+    <div class="modal-card glass">
+      <button class="close" id="closeContact">×</button>
+      <h3>¿Con qué agencia deseas comunicarte?</h3>
+      <p>Selecciona una agencia y te enviaremos directo a WhatsApp.</p>
+      <div class="agency-options">
+        <a class="agency" href="https://wa.me/50236500543" target="_blank" rel="noopener">Malacatán</a>
+        <a class="agency" href="https://wa.me/50259173974" target="_blank" rel="noopener">San Pablo</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
