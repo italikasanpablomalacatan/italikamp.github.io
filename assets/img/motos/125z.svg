@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420">
+<defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#2d8cff"/><stop offset="1" stop-color="#ffffff"/></linearGradient><filter id="s"><feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#000" flood-opacity=".45"/></filter></defs>
+<rect width="640" height="420" fill="none"/>
+<g filter="url(#s)" opacity=".95">
+<circle cx="190" cy="295" r="55" fill="none" stroke="url(#g)" stroke-width="18"/><circle cx="455" cy="295" r="55" fill="none" stroke="url(#g)" stroke-width="18"/>
+<path d="M155 286 L245 210 L352 210 L460 286 M245 210 L300 292 L365 210 M300 292 L430 292" fill="none" stroke="url(#g)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M342 190 C390 155 455 163 500 205" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round"/>
+<path d="M230 196 L275 160 L365 160" fill="none" stroke="#76caff" stroke-width="16" stroke-linecap="round"/>
+</g><text x="320" y="92" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="900" fill="#fff">125Z</text>
+<text x="320" y="135" text-anchor="middle" font-family="Arial" font-size="20" fill="#76caff" letter-spacing="4">IMAGEN PROVISIONAL</text></svg>

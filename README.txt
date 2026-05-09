@@ -1,28 +1,12 @@
-INSTRUCCIONES RÁPIDAS
+INSTRUCCIONES
+1. Descomprime este ZIP.
+2. En GitHub, sube TODOS los archivos y carpetas que están dentro.
+3. Reemplaza los archivos anteriores.
+4. Espera 1-2 minutos y presiona CTRL + F5 en tu página.
 
-1) Sube estos archivos a la raíz de tu repositorio GitHub Pages:
-   - index.html
-   - styles.css
-   - app.js
-   - data.js
-   - assets/
+IMÁGENES DE MOTOS
+Coloca las imágenes reales en assets/img/motos/ con estos nombres:
+d125, ws150, d150, ds150, bit150, at110, gtk125, gtk125-negro, gtk125-azul, gtk125x-r, gtk125x-a, gtk125x-n, 125z, 125z-negro, 150z, 150z-amarillo, 200z, 250z, 280z, blackbird250, titan250, rt250g, vort-x250, dm125, dm150, dm200, dm250, dm250x, dm300, atv150, atv180, atv200, atv250
 
-2) Las imágenes de las motos van en:
-   assets/img/motos/
-
-3) El sistema busca automáticamente estos formatos:
-   .webp, .jpg, .jpeg, .png, .gif, .avif, .svg
-
-4) El nombre debe coincidir con imageBase en data.js.
-   Ejemplo:
-   imageBase: "d125"
-   puedes subir cualquiera de estos:
-   d125.png / d125.jpg / d125.webp / d125.jpeg
-
-5) Para cambiar precios o modelos, edita data.js.
-
-WhatsApp configurado:
-- Malacatán: +502 3650 0543
-- San Pablo: +502 5917 3974
-
-La página está optimizada para PC, tablet y celular.
+Formatos soportados: webp, jpg, jpeg, png, gif, avif, svg.
+Si no subes imagen real, aparecerá una imagen provisional elegante con el nombre de la moto.
