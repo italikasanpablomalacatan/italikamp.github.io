@@ -1,19 +1,28 @@
-CATÁLOGO DE MOTOS - GITHUB PAGES
+INSTRUCCIONES RÁPIDAS
 
-Cómo usar:
-1. Sube todos estos archivos a tu repositorio de GitHub Pages.
-2. Las imágenes de las motos van en la carpeta: assets/img/
-3. Nombra las imágenes con el nombre simplificado indicado en data.js.
-   Ejemplos:
-   - d125.jpg / d125.png / d125.webp
-   - ws150.jpg / ws150.png / ws150.webp
-   - titan250.jpg / titan250.png / titan250.webp
+1) Sube estos archivos a la raíz de tu repositorio GitHub Pages:
+   - index.html
+   - styles.css
+   - app.js
+   - data.js
+   - assets/
 
-Formatos soportados:
-jpg, jpeg, png, webp, gif, avif, svg.
+2) Las imágenes de las motos van en:
+   assets/img/motos/
 
-WhatsApp:
-- Malacatán: +502 36500543
-- San Pablo: +502 59173974
+3) El sistema busca automáticamente estos formatos:
+   .webp, .jpg, .jpeg, .png, .gif, .avif, .svg
 
-Puedes cambiar productos, precios e imágenes en el archivo data.js.
+4) El nombre debe coincidir con imageBase en data.js.
+   Ejemplo:
+   imageBase: "d125"
+   puedes subir cualquiera de estos:
+   d125.png / d125.jpg / d125.webp / d125.jpeg
+
+5) Para cambiar precios o modelos, edita data.js.
+
+WhatsApp configurado:
+- Malacatán: +502 3650 0543
+- San Pablo: +502 5917 3974
+
+La página está optimizada para PC, tablet y celular.

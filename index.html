@@ -3,60 +3,119 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Catálogo de Motos</title>
+  <meta name="theme-color" content="#06142e" />
+  <title>Catálogo Italika</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="bg-glow glow-one"></div>
-  <div class="bg-glow glow-two"></div>
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+  <div class="ambient ambient-3"></div>
 
-  <header class="hero glass reveal">
-    <nav>
-      <div class="brand"><span></span> Catálogo Motos</div>
-      <a href="#catalogo" class="nav-link">Ver catálogo</a>
+  <header class="site-header">
+    <nav class="topbar glass">
+      <a href="#catalogo" class="tab active" aria-label="Ir al catálogo">
+        <span class="tab-icon">▦</span> Catálogo
+      </a>
+      <button class="tab" id="openAbout" type="button">
+        <span class="tab-icon">ⓘ</span> Acerca de
+      </button>
     </nav>
-    <section class="hero-content">
-      <p class="eyebrow">Distribuidores y T.P.</p>
-      <h1>Del 12 al 18 de Mayo 2026</h1>
-      <p class="subtitle">Explora modelos, precios de contado y crédito en una experiencia minimalista con estilo cristal.</p>
-      <div class="hero-actions">
-        <a href="#catalogo" class="btn primary">Explorar motos</a>
-        <button class="btn ghost" id="openContactTop">Contactar agencia</button>
+
+    <section class="hero">
+      <div class="logo-lockup reveal">
+        <img class="brand-logo italika-logo" src="assets/img/logo-malacatan.png" alt="Logo Italika Malacatán" />
+        <div class="hero-title">
+          <span>Catálogo</span>
+          <strong>de Motocicletas</strong>
+        </div>
       </div>
+      <p class="hero-subtitle reveal delay-1">Modelos disponibles, precios de contado y atención directa por WhatsApp.</p>
     </section>
   </header>
 
-  <main>
-    <section class="toolbar glass reveal" id="catalogo">
-      <div>
-        <h2>Catálogo</h2>
-        <p>Busca por modelo, SKU, código o categoría.</p>
-      </div>
-      <input id="searchInput" type="search" placeholder="Buscar moto..." />
-    </section>
+  <main class="layout" id="catalogo">
+    <aside class="sidebar glass reveal delay-2">
+      <button class="filter active" data-category="Todas"><span>▦</span><b>Todas</b><em id="allCount">0</em></button>
+      <div id="categoryFilters"></div>
+    </aside>
 
-    <section id="categoryFilters" class="filters reveal"></section>
-    <section id="catalogGrid" class="catalog-grid"></section>
+    <section class="content">
+      <div class="controls reveal delay-2">
+        <label class="search-box glass">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="Buscar modelo, categoría o SKU..." autocomplete="off" />
+        </label>
+        <select id="sortSelect" class="select glass" aria-label="Ordenar catálogo">
+          <option value="default">Ordenar</option>
+          <option value="price-asc">Precio: menor a mayor</option>
+          <option value="price-desc">Precio: mayor a menor</option>
+          <option value="name-asc">Nombre A-Z</option>
+        </select>
+      </div>
+
+      <div class="mobile-filters reveal delay-3" id="mobileFilters"></div>
+      <section id="catalogGrid" class="catalog-grid"></section>
+    </section>
   </main>
 
   <button class="floating-phone" id="openContact" aria-label="Contactar por WhatsApp">
-    <span class="phone-icon">☎</span>
+    <span>☎</span>
+    <b>Contactar</b>
   </button>
 
-  <div class="modal" id="contactModal" aria-hidden="true">
-    <div class="modal-card glass">
-      <button class="close" id="closeContact">×</button>
-      <h3>¿Con qué agencia deseas comunicarte?</h3>
-      <p>Selecciona una agencia y te enviaremos directo a WhatsApp.</p>
-      <div class="agency-options">
-        <a class="agency" href="https://wa.me/50236500543" target="_blank" rel="noopener">Malacatán</a>
-        <a class="agency" href="https://wa.me/50259173974" target="_blank" rel="noopener">San Pablo</a>
+  <div class="modal" id="productModal" aria-hidden="true">
+    <div class="modal-card product-detail glass" role="dialog" aria-modal="true">
+      <button class="close" id="closeProduct" type="button">×</button>
+      <div class="detail-grid">
+        <div class="detail-image" id="detailImage"></div>
+        <div class="detail-info">
+          <span class="category-tag" id="detailCategory"></span>
+          <h2 id="detailName"></h2>
+          <p id="detailModel"></p>
+          <div class="detail-price"><small>Precio de contado</small><strong id="detailPrice"></strong></div>
+          <div class="detail-meta">
+            <span id="detailSku"></span>
+            <span id="detailCode"></span>
+          </div>
+          <button class="interest-btn" id="detailInterest" type="button">Me interesa esto</button>
+        </div>
       </div>
     </div>
   </div>
+
+  <div class="modal" id="agencyModal" aria-hidden="true">
+    <div class="modal-card agency-card glass" role="dialog" aria-modal="true">
+      <button class="close" id="closeAgency" type="button">×</button>
+      <div class="phone-circle">☎</div>
+      <h3>¿Con qué agencia deseas comunicarte?</h3>
+      <p id="agencyText">Selecciona una agencia y te enviaremos directo a WhatsApp.</p>
+      <div class="agency-options">
+        <button class="agency" data-agency="malacatan" type="button">
+          <img src="assets/img/logo-malacatan.png" alt="Malacatán" />
+          <span>Malacatán</span>
+        </button>
+        <button class="agency" data-agency="sanpablo" type="button">
+          <img src="assets/img/logo-sanpablo.png" alt="San Pablo" />
+          <span>San Pablo</span>
+        </button>
+      </div>
+      <small class="hint">Te redirigiremos a WhatsApp con el mensaje listo para enviar.</small>
+    </div>
+  </div>
+
+  <div class="modal" id="aboutModal" aria-hidden="true">
+    <div class="modal-card glass small-card" role="dialog" aria-modal="true">
+      <button class="close" id="closeAbout" type="button">×</button>
+      <h3>Catálogo de Motocicletas</h3>
+      <p>Diseño minimalista azul marino y blanco con efecto cristal. Optimizado para computadora, tablet y celular.</p>
+    </div>
+  </div>
+
+  <footer>© 2026 Italika Malacatán / San Pablo - Catálogo de motocicletas.</footer>
 
   <script src="data.js"></script>
   <script src="app.js"></script>
