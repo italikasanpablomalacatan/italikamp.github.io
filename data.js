@@ -1,8 +1,8 @@
 const motos = [
-  { sku:"34005154", codigo:"70000151", nombre:"D125", detalle:"D125 BLAN/NEG/TURQUESA", categoria:"Scooter", precio:7499, img:"D125" },
-  { sku:"34005713", codigo:"70000262", nombre:"WS150", detalle:"WS150 A/A", categoria:"Scooter", precio:8499, img:"WS150" },
-  { sku:"34005153", codigo:"70000153", nombre:"D150", detalle:"D150 TURQUESA NEGRO", categoria:"Scooter", precio:8999, img:"D150" },
-  { sku:"34005703", codigo:"70000260", nombre:"DS150", detalle:"DS150 N/N", categoria:"Scooter", precio:9499, img:"DS150" },
+  { sku:"34005154", codigo:"70000151", nombre:"D125", detalle:"D125 BLAN/NEG/TURQUESA", categoria:"Pasolas", precio:7499, img:"D125" },
+  { sku:"34005713", codigo:"70000262", nombre:"WS150", detalle:"WS150 A/A", categoria:"Pasolas", precio:8499, img:"WS150" },
+  { sku:"34005153", codigo:"70000153", nombre:"D150", detalle:"D150 TURQUESA NEGRO", categoria:"Pasolas", precio:8999, img:"D150" },
+  { sku:"34005703", codigo:"70000260", nombre:"DS150", detalle:"DS150 N/N", categoria:"Pasolas", precio:9499, img:"DS150" },
 
   { sku:"34006081", codigo:"70000266", nombre:"BIT150", detalle:"BIT150 ROJO NEGRO", categoria:"Trabajo", precio:8999, img:"BIT150" },
   { sku:"34005587", codigo:"70000252", nombre:"AT110", detalle:"AT110", categoria:"Trabajo", precio:6499, img:"AT110" },
